@@ -74,6 +74,6 @@ INPUT=$(echo -n "${INPUT}" | perl -p -e "s/(?<!href=\")((?:https?|ftp|mailto)\:\
 INPUT=$(echo -n "${INPUT}" | perl -p -e 's/([^A-Za-z0-9])/sprintf("%%%02X", ord($1))/seg')
 
 # do the curl
-curl -sS \
+curl -sSk \
   -d "auth_token=$TOKEN&room_id=$ROOM_ID&from=$FROM&color=$COLOR&message=$INPUT&notify=$NOTIFY" \
   https://$HOST/v1/rooms/message
